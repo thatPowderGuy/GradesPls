@@ -12,16 +12,24 @@ public struct Student {
     private string lastName;
 
     [SerializeField]
+    private string matrikelNummer;
+
+    [SerializeField]
     private float intelligence;
 
-    public Student GenerateNewPunnyStudent()
+    [SerializeField]
+    private Font typeface;
+
+    public Student GenerateNewPunnyStudent(FontDatabase fontDatabase)
     {
         string[] fullName = NameDatabase.GetFirstAndLastName();
 
         return new Student {
-            firstName = fullName[0] ,
+            firstName = fullName[0],
             lastName = fullName[1],
-            intelligence = UnityEngine.Random.Range(0f,1f)};
+            matrikelNummer = "0" + UnityEngine.Random.Range(3600000, 3699999),
+            intelligence = UnityEngine.Random.Range(0f,1f),
+            typeface = fontDatabase.GetRandom()};
     }
 
     public string FirstName()
@@ -34,8 +42,18 @@ public struct Student {
         return lastName;
     }
 
+    public string MatrikelNummer()
+    {
+        return matrikelNummer;
+    }
+
     public float Intelligence()
     {
         return intelligence;
+    }
+
+    public Font Typeface()
+    {
+        return typeface;
     }
 }
