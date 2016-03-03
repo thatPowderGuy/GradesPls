@@ -3,9 +3,30 @@ using System.Collections;
 
 public class Stempel : MonoBehaviour {
 
+    public enum stamps
+    {
+        checkmark,
+        one,
+        two,
+        three,
+        four,
+        five,
+        six,
+        seven,
+        eight,
+        nine,
+        nextPage,
+        prevPage
+    }
+
     public Animator animator;
 
-    public float stampDelayInSec;
+    public Color stampColor;
+
+    public GameObject image;
+    public stamps stamp;
+
+    private float stampDelayInSec = 0.4f;
     private float timer;
 
 	// Use this for initialization
@@ -28,7 +49,7 @@ public class Stempel : MonoBehaviour {
         else
         {
             timer -= Time.deltaTime;
-            if(timer <= 0 || (timer <= 0.25f * stampDelayInSec && !Input.GetMouseButton(0)))
+            if(timer <= 0)
             {
                 stampThatShit();
                 timer = 0;
@@ -55,7 +76,14 @@ public class Stempel : MonoBehaviour {
             {
                 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
                 mousePos.z = c.transform.position.z;
-                c.getClicked(mousePos);
+                if (c.getClicked(mousePos, this) && image != null)
+                {
+                    GameObject stamped = (GameObject)Instantiate(image, mousePos, image.transform.rotation);
+                    stamped.GetComponent<SpriteRenderer>().color = stampColor;
+
+                    stampColor = new Color(stampColor.r, stampColor.g, stampColor.b, stampColor.a * 0.9f);
+                }
+                break;
             }
         }
     }
