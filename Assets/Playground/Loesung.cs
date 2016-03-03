@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 
 [System.Serializable]
-public struct Aufgabenstellung {
+public struct Loesung {
 
     public int punkte;
-    public RectTransform text;
-    public GameObject musterloesung;
+    public GameObject content;
+
+
 }

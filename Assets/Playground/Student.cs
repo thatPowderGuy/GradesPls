@@ -2,34 +2,34 @@
 using System.Collections;
 using System;
 
-[Serializable]
-public struct Student {
+public class Student {
 
-    [SerializeField]
+    public static FontDatabase fontDatabase;
+
     private string firstName;
 
-    [SerializeField]
     private string lastName;
 
-    [SerializeField]
     private string matrikelNummer;
 
-    [SerializeField]
     private float intelligence;
 
-    [SerializeField]
     private Font typeface;
 
-    public Student GenerateNewPunnyStudent(FontDatabase fontDatabase)
+    public static Student GenerateNewPunnyStudent()
     {
         string[] fullName = NameDatabase.GetFirstAndLastName();
 
-        return new Student {
+        Student s = new Student {
             firstName = fullName[0],
             lastName = fullName[1],
             matrikelNummer = "0" + UnityEngine.Random.Range(3600000, 3699999),
             intelligence = UnityEngine.Random.Range(0f,1f),
             typeface = fontDatabase.GetRandom()};
+
+        Studentenschaft.instance.AddStudent(s);
+
+        return s;
     }
 
     public string FirstName()
