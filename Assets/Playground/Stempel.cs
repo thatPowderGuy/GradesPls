@@ -28,9 +28,10 @@ public class Stempel : MonoBehaviour {
         else
         {
             timer -= Time.deltaTime;
-            if(timer <= 0 || !Input.GetMouseButton(0))
+            if(timer <= 0 || (timer <= 0.25f * stampDelayInSec && !Input.GetMouseButton(0)))
             {
                 stampThatShit();
+                timer = 0;
             }
         }
 	}
@@ -43,5 +44,19 @@ public class Stempel : MonoBehaviour {
     }
 
     void stampThatShit()
-    { }
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Ray charles = Camera.main.ScreenPointToRay(mousePos);
+        RaycastHit2D[] greatestHits = Physics2D.GetRayIntersectionAll(charles, 20);
+        foreach(RaycastHit2D hit in greatestHits)
+        {
+            Clickable c = hit.collider.gameObject.GetComponent<Clickable>();
+            if(c != null)
+            {
+                mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
+                mousePos.z = c.transform.position.z;
+                c.getClicked(mousePos);
+            }
+        }
+    }
 }
