@@ -19,7 +19,8 @@ public class StempelSeite : Clickable {
                 break;
 
             case Stempel.stamps.begone:
-                klausur.Evaluate();
+                if (!klausur.isSolution)
+                    klausur.Evaluate();
                 break;
         }
 
