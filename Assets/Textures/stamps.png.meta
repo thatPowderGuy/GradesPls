@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: 9adbdb0a70dfd8a46b4ae747a559668b
+timeCreated: 1457094621
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: stamps_begone
+    21300002: stamps_0
+    21300004: stamps_5
+    21300006: stamps_mine
+    21300008: stamps_1
+    21300010: stamps_6
+    21300012: stamps_left
+    21300014: stamps_2
+    21300016: stamps_7
+    21300018: stamps_right
+    21300020: stamps_3
+    21300022: stamps_8
+    21300024: stamps_checkmark
+    21300026: stamps_4
+    21300028: stamps_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: stamps_begone
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1185
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_0
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1185
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_5
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 1185
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_mine
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 889
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_1
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 889
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_6
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 889
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_left
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 592
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_2
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 592
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_7
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 592
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_right
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 296
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_3
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 296
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_8
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 296
+        width: 273
+        height: 273
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_checkmark
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 273
+        height: 272
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_4
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 0
+        width: 273
+        height: 272
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: stamps_9
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 0
+        width: 273
+        height: 272
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6,6 +6,7 @@ public class Stempel : MonoBehaviour {
     public enum stamps
     {
         checkmark,
+        zero,
         one,
         two,
         three,
@@ -16,7 +17,9 @@ public class Stempel : MonoBehaviour {
         eight,
         nine,
         nextPage,
-        prevPage
+        prevPage,
+        mine,
+        begone
     }
 
     public Animator animator;
@@ -80,6 +83,7 @@ public class Stempel : MonoBehaviour {
                 {
                     GameObject stamped = (GameObject)Instantiate(image, mousePos, image.transform.rotation);
                     stamped.GetComponent<SpriteRenderer>().color = stampColor;
+                    stamped.transform.parent = hit.collider.transform;
 
                     stampColor = new Color(stampColor.r, stampColor.g, stampColor.b, stampColor.a * 0.9f);
                 }
