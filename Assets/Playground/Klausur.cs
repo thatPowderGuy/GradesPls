@@ -5,26 +5,29 @@ using System;
 
 public class Klausur : MonoBehaviour {
 
+    public GameObject klausurprefab;
+
     public bool isSolution = false;
 
     private Student verursacher;
 
     public string lehrstuhl, fach;
 
-    public Canvas[] pageCanvases;
+    public GameObject[] pages;
     public AufgabenSeite[] aufgabenSeiten;
     public Text[] aufgabenMaxPunkte;
+    public PunkteStempelFeld[] punkteStempelFelder;
     public Text gesamtPunkte;
 
-    private Canvas activeCanvas;
+    private GameObject activePage;
 
     public Text semesterDatumText, lehrstuhlText, fachText, nameText, vornameText, matrNrText, hoersaalText, reiheText, sitzText;
 
-    private int page = 0;
+    private int page = 0, erreichtePunkteGesamt;
 
     private void Start()
     {
-        activeCanvas = pageCanvases[0];
+        activePage = pages[0];
 
         DateTime lastWeek = DateTime.Now.AddDays(-7.0);
 
@@ -69,10 +72,10 @@ public class Klausur : MonoBehaviour {
             aufgabenMaxPunkte[i].text = ags.aufgabenStellung.punkte.ToString();
             gesPkt += ags.aufgabenStellung.punkte;
 
-            ags.aufgabePunkte.text = "Aufgabe " + (i + 1) + " (" + ags.aufgabenStellung.punkte + " Punkte)";
+            ags.aufgabePunkte.text = "Aufgabe " + (i + 1) + ": " + ags.titel + " (" + ags.aufgabenStellung.punkte + " Punkte)";
             ags.aufgabenText = ags.aufgabenStellung.text;
-            ags.divider.transform.position = ags.aufgabenText.TransformPoint(new Vector2(
-                ags.aufgabenText.rect.center.x, ags.aufgabenText.rect.yMax - 70));
+            //ags.divider.transform.position = ags.aufgabenText.TransformPoint(new Vector2(
+            //    ags.aufgabenText.rect.center.x, ags.aufgabenText.rect.yMax - 70));
 
             if (isSolution)
             {
@@ -80,10 +83,10 @@ public class Klausur : MonoBehaviour {
 
                 ags.loesungHeader.gameObject.SetActive(true);
                 ags.loesungHeader.transform.position = ags.aufgabenText.TransformPoint(new Vector2(
-                ags.aufgabenText.rect.xMin + ags.loesungHeader.rectTransform.rect.width / 2f, ags.aufgabenText.rect.yMax - 95));
+                ags.aufgabenText.rect.xMin + ags.loesungHeader.rectTransform.rect.width / 2f, ags.aufgabenText.rect.yMax - 150));
 
                 ags.aufgabenStellung.musterloesung.transform.position = ags.aufgabenText.TransformPoint(new Vector2(
-                ags.aufgabenText.rect.center.x, ags.aufgabenText.rect.yMax - 135));
+                ags.aufgabenText.rect.center.x, ags.aufgabenText.rect.yMax - 195));
             }
             else
             {
@@ -97,6 +100,9 @@ public class Klausur : MonoBehaviour {
                 loesung.gameObject.SetActive(true);
                 loesung.position = ags.aufgabenText.TransformPoint(new Vector2(
                 ags.aufgabenText.rect.center.x, ags.aufgabenText.rect.yMax - 135));
+                ags.erreichtePunkte = int.Parse(loesung.name);
+
+                erreichtePunkteGesamt += ags.erreichtePunkte;
             }
 
             gesamtPunkte.text = gesPkt.ToString();
@@ -120,9 +126,9 @@ public class Klausur : MonoBehaviour {
         {
             page++;
 
-            activeCanvas.enabled = false;
-            activeCanvas = pageCanvases[page];
-            activeCanvas.enabled = true;
+            activePage.SetActive(false);
+            activePage = pages[page];
+            activePage.SetActive(true);
         }
     }
 
@@ -131,9 +137,40 @@ public class Klausur : MonoBehaviour {
         if (page > 0)
         {
             page--;
-            activeCanvas.enabled = false;
-            activeCanvas = pageCanvases[page];
-            activeCanvas.enabled = true;
+
+            activePage.SetActive(false);
+            activePage = pages[page];
+            activePage.SetActive(true);
         }
+    }
+
+    public void Evaluate()
+    {
+        int aufgabe = 1;
+        int cash = 0;
+
+        foreach (PunkteStempelFeld psf in punkteStempelFelder)
+        {
+            if (null == psf.punkte)
+            {
+                //SendToUI("Punkte bei Aufgabe " + aufgabe + " nicht eingetragen!");
+                cash -= 5;
+            }
+
+            cash += aufgabenSeiten[aufgabe - 1].aufgabenStellung.punkte - Mathf.Abs(aufgabenSeiten[aufgabe - 1].erreichtePunkte - psf.punkte.Value);
+
+            aufgabe++;
+        }
+
+        AddUICash(cash);
+
+        Instantiate(klausurprefab, transform.position, transform.rotation);
+
+        Destroy(gameObject);
+    }
+
+    private void AddUICash(int cash)
+    {
+        //
     }
 }
