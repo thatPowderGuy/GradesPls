@@ -1,11 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System;
 
 public class Klausur : MonoBehaviour {
-
-    public GameObject klausurprefab;
 
     public bool isSolution = false;
 
@@ -169,7 +167,7 @@ public class Klausur : MonoBehaviour {
 
         AddUICash(cash);
 
-        Instantiate(klausurprefab, transform.position, transform.rotation);
+        Instantiate(PrefabHolder.instance.klausurPrefab, transform.position, transform.rotation);
 
         Destroy(gameObject);
     }
