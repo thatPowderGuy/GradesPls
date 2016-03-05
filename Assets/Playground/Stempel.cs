@@ -34,7 +34,7 @@ public class Stempel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Cursor.visible = false;
+        //Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
@@ -78,7 +78,7 @@ public class Stempel : MonoBehaviour {
             if(c != null)
             {
                 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
-                mousePos.z = c.transform.position.z;
+                mousePos.z = c.transform.position.z -2;
                 if (c.getClicked(mousePos, this) && image != null)
                 {
                     GameObject stamped = (GameObject)Instantiate(image, mousePos, image.transform.rotation);

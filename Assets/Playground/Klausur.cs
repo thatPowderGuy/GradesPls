@@ -92,12 +92,12 @@ public class Klausur : MonoBehaviour {
             {
                 Transform loesung = ags.loesungen.transform.GetChild(UnityEngine.Random.Range(0, ags.loesungen.transform.childCount));
 
+                loesung.gameObject.SetActive(true);
                 foreach (Text t in loesung.GetComponentsInChildren<Text>())
                 {
                     t.font = verursacher.Typeface();
                 }
 
-                loesung.gameObject.SetActive(true);
                 loesung.position = ags.aufgabenText.TransformPoint(new Vector2(
                 ags.aufgabenText.rect.center.x, ags.aufgabenText.rect.yMax - 135));
                 ags.erreichtePunkte = int.Parse(loesung.name);
@@ -129,6 +129,10 @@ public class Klausur : MonoBehaviour {
             activePage.SetActive(false);
             activePage = pages[page];
             activePage.SetActive(true);
+            foreach (Text t in activePage.GetComponent<AufgabenSeite>().loesungen.GetComponentsInChildren<Text>())
+            {
+                t.font = verursacher.Typeface();
+            }
         }
     }
 
@@ -156,9 +160,10 @@ public class Klausur : MonoBehaviour {
                 //SendToUI("Punkte bei Aufgabe " + aufgabe + " nicht eingetragen!");
                 cash -= 5;
             }
-
-            cash += aufgabenSeiten[aufgabe - 1].aufgabenStellung.punkte - Mathf.Abs(aufgabenSeiten[aufgabe - 1].erreichtePunkte - psf.punkte.Value);
-
+            else
+            {
+                cash += aufgabenSeiten[aufgabe - 1].aufgabenStellung.punkte - Mathf.Abs(aufgabenSeiten[aufgabe - 1].erreichtePunkte - psf.punkte.Value);            
+            }
             aufgabe++;
         }
 
